@@ -1,25 +1,63 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
+#define DEFAULT 0
+#define SYM 1
+#define SYS 2
+
 / {
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-// ------------------------------------------------------------- -------------------------------------------------------------
-// |  SHIFT  |    Q    |    W    |    E    |    R    |    T    | |    Y    |    U    |    I    |    O    |    P    |    \    |
-// |---------|---------|---------|---------|---------|---------| |---------|---------|---------|---------|---------|---------|
-// |   ESC   |    A    |    S    |    D    |    F    |    G    | |    H    |    J    |    K    |    L    |    ;    |    '    |
-// |---------|---------|---------|---------|---------|---------| |---------|---------|---------|---------|---------|---------|
-// |  SHIFT  |    Z    |    X    |    C    |    V    |    B    | |    N    |    M    |    ,    |    .    |    /    |  R CTRL |
-// |---------|---------|---------|---------|---------|---------| |---------|---------|---------|---------|---------|---------|
-// |         |         |  SHIFT  |   GUI   |   DEL   |  BSPC   | |  SPACE  |   RET   |  R ALT  |  SHIFT  |         |         |
-// ------------------------------------------------------------- -------------------------------------------------------------
+// -------------------------------------------------------------                     -------------------------------------------------------------
+// | SYSESC  |    Q    |    W    |    E    |    R    |    T    |                     |    Y    |    U    |    I    |    O    |    P    |    \    |
+// |---------|---------|---------|---------|---------|---------|                     |---------|---------|---------|---------|---------|---------|
+// |   ESC   |    A    |    S    |    D    |    F    |    G    |                     |    H    |    J    |    K    |    L    |    ;    |    '    |
+// |---------|---------|---------|---------|---------|---------|                     |---------|---------|---------|---------|---------|---------|
+// |         |    Z    |    X    |    C    |    V    |    B    |                     |    N    |    M    |    ,    |    .    |    /    |         |
+// |---------|---------|---------|---------|---------|---------|---------- ----------|---------|---------|---------|---------|---------|---------|
+// |         |         |         |  NONE   |   GUI   | SYMTAB  |  BSPCS  | |  SPACE  |   RET   |  R ALT  |  NONE   |         |         |         |
+// ----------------------------------------------------------------------- -----------------------------------------------------------------------
             bindings = <
-    &kp LSHIFT &kp Q      &kp W       &kp E     &kp R     &kp T      &kp Y     &kp U     &kp I     &kp O      &kp P      &kp BSLH
-    &kp ESC    &kp A      &kp S       &kp D     &kp F     &kp G      &kp H     &kp J     &kp K     &kp L      &kp SEMI   &kp SQT
-    &kp LSHIFT &kp Z      &kp X       &kp C     &kp V     &kp B      &kp N     &kp M     &kp COMMA &kp DOT    &kp FSLH   &kp RCTRL
-    &kp LSHIFT &kp LSHIFT &kp LSHIFT  &kp LGUI  &kp DEL   &kp BSPC   &kp SPACE &kp RET   &kp RALT  &kp LSHIFT &kp LSHIFT &kp LSHIFT
+    &lt SYS ESC &kp Q      &kp W       &kp E     &kp R         &kp T             &kp Y     &kp U           &kp I     &kp O      &kp P      &kp BSLH
+    &kp ESC     &kp A      &kp S       &kp D     &kp F         &kp G             &kp H     &kp J           &kp K     &kp L      &kp SEMI   &kp SQT
+    &none       &kp Z      &kp X       &kp C     &kp V         &kp B             &kp N     &kp M           &kp COMMA &kp DOT    &kp FSLH   &none
+    &none       &none      &none       &kp LGUI  &lt SYM TAB   &mt LSHIFT BSPC   &kp SPACE &mt LCTRL RET   &kp RALT  &none      &none      &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        sym_layer {
+// 
+// |-----------------------------------------|   |-----------------------------------------|
+// |   `  |   !  |   @  |   {  |   }  |   &  |   |   *  |   7  |   8  |   9  |   +  |   =  |
+// |------+------+------+------+------+-------   |------+------+------+------+------+------|
+// |   ~  |   ^  |   $  |   (  |   )  |   '  |   |   ;  |   4  |   5  |   6  |   -  |   _  |
+// |------+------+------+------+------+------|   |------+------+------+------+------+------|
+// |      |   #  |   %  |   [  |   ]  |   "  |   |   :  |   1  |   2  |   3  |   \  |      | but windows
+// |------+------+------+------+------+------|   |------+------+------+------+------+------|
+// |      |      |      |      |      |      |   |      |      |   0  |      |      |      |
+// |-----------------------------------------|   |-----------------------------------------|
+//  pipe missing
+
+            bindings = <
+    &kp GRAV &kp Q      &kp W       &kp E     &kp R         &kp T             &kp Y     &kp U           &kp I     &kp O      &kp P      &kp BSLH
+    &kp TILD &kp A      &kp S       &kp D     &kp F         &kp G             &kp H     &kp J           &kp K     &kp L      &kp SEMI   &kp SQT
+    &trans   &kp Z      &kp X       &kp C     &kp V         &kp B             &kp N     &kp M           &kp COMMA &kp DOT    &kp FSLH   &trans
+    &trans   &trans     &trans      &trans    &trans        &trans            &trans    &trans          &kp N0    &trans     &trans     &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        sys_layer {
+            bindings = <
+    &trans &kp K_VOL_DN &kp K_MUTE  &kp K_VOL_UP &trans        &trans            &trans   &trans   &trans &trans    &trans &trans
+    &trans &kp K_PREV   &kp K_PP    &kp K_NEXT   &kp PSCRN     &trans            &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+    &trans &trans       &trans      &trans       &trans        &trans            &trans   &trans   &trans &trans    &trans &trans
+    &trans &trans       &trans      &transUI     &trans        &trans            &trans   &trans   &trans &trans    &trans &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
