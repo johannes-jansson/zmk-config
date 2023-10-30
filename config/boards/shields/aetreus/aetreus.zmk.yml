@@ -1,0 +1,8 @@
+file_format: "1"
+id: aetreus
+name: Aetreus
+type: shield
+url: https://github.com/johannes-jansson/zmk-config
+requires: [pro_micro]
+features:
+  - keys

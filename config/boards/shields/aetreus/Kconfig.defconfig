@@ -1,0 +1,6 @@
+if SHIELD_AETREUS
+
+config ZMK_KEYBOARD_NAME
+    default "Aetreus"
+
+endif
