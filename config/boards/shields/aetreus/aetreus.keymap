@@ -10,31 +10,50 @@
 #define _ &trans
 #define xxx &none
 
+// Custom modifiers and keys
 #define sysesc &lt SYS ESC
 #define symtab &lt SYM TAB
 #define shbspc &mt LSHIFT BSPC
 #define ctrret &mt LCTRL RET
+#define ansiky &kp LS(MINUS)
 
-#define grav  &kp PLUS
-#define tild  &kp LA(RBKT)
-#define excl  &kp EXCL
-#define circ  &kp RBRC
-#define hash  &kp HASH
-#define at    &kp LA(N2)
-#define dlr   &kp LA(N4)
-#define prcnt &kp PRCNT
-#define lcbr  &kp LS(LA(N8))
-#define rcbr  &kp LS(LA(N9))
-#define lprn  &kp LS(N8)
-#define rprn  &kp LS(N9)
-#define lbrc  &kp LA(N8)
-#define rbrc  &kp LA(N9)
-#define ampr  &kp LS(N6)
-#define quot  &kp BSLH
-#define dquo  &kp LS(N2)
-#define astr  &kp PIPE
-#define scln  &kp LS(COMMA)
-#define coln  &kp LS(DOT)
+// Sym layer (weird bc SE KB layout)
+#define grav &kp PLUS
+#define tild &kp LA(RBKT)
+#define excl &kp EXCL
+#define circ &kp RBRC
+#define hash &kp HASH
+#define at   &kp LA(N2)
+#define dolr &kp LA(N4)
+#define prcn &kp PRCNT
+#define lcbr &kp LS(LA(N8))
+#define rcbr &kp LS(LA(N9))
+#define lprn &kp LS(N8)
+#define rprn &kp LS(N9)
+#define lbrc &kp LA(N8)
+#define rbrc &kp LA(N9)
+#define ampr &kp LS(N6)
+#define quot &kp BSLH
+#define dquo &kp LS(N2)
+#define astr &kp PIPE
+#define scln &kp LS(COMMA)
+#define coln &kp LS(DOT)
+#define num0 &kp N0
+#define num1 &kp N1
+#define num2 &kp N2
+#define num3 &kp N3
+#define num4 &kp N4
+#define num5 &kp N5
+#define num6 &kp N6
+#define num7 &kp N7
+#define num8 &kp N8
+#define num9 &kp N9
+#define pipe &kp LA(N7)
+#define plus &kp MINUS
+#define mins &kp BSLH
+#define bsls &kp LS(LA(N7))
+#define equl &kp LS(N0)
+#define unds &kp LS(FSLH)
 
 / {
     keymap {
@@ -53,7 +72,7 @@
             bindings = <
     sysesc   &kp Q  &kp W  &kp E  &kp R     &kp T                     &kp Y   &kp U     &kp I     &kp O      &kp P      &kp BSLH
     &kp ESC  &kp A  &kp S  &kp D  &kp F     &kp G                     &kp H   &kp J     &kp K     &kp L      &kp SEMI   &kp SQT
-    xxx      &kp Z  &kp X  &kp C  &kp V     &kp B                     &kp N   &kp M     &kp COMMA &kp DOT    &kp FSLH   xxx   
+    xxx      &kp Z  &kp X  &kp C  &kp V     &kp B                     &kp N   &kp M     &kp COMMA &kp DOT    ansiky     xxx   
              xxx    xxx    xxx    &kp LGUI  symtab  shbspc  &kp SPACE ctrret  &kp RALT  xxx       xxx        xxx
             >;
         };
@@ -67,15 +86,15 @@
 // -------+------+------+------+------+------|   |------+------+------+------+------+-------
 //        |   #  |   %  |   [  |   ]  |   "  |   |   :  |   1  |   2  |   3  |   \  |
 //        -------+------+------+------+------|   |------+------+------+------+-------
-//               |      |      |      |      |   |      |      |   0  |      |
+//               |      |      |      |      |   |      |   |  |   0  |      |
 //               -----------------------------   -----------------------------
 //  pipe missing 
 
             bindings = <
-    grav  excl  at     lcbr  rcbr  ampr    astr  &kp N7  &kp N8  &kp N9  &kp P      &kp BSLH
-    tild  circ  dlr    lprn  rprn  quot    scln  &kp N4  &kp N5  &kp N6  &kp SEMI   &kp SQT
-    _     hash  prcnt  lbrc  rbrc  dquo    coln  &kp N1  &kp N1  &kp N3  &kp FSLH   _     
-    _     _     _      _     _     _       _     _       &kp N0  _       _          _     
+    grav  excl  at     lcbr  rcbr  ampr      astr  num7  num8  num9  plus  equl
+    tild  circ  dolr   lprn  rprn  quot      scln  num4  num5  num6  mins  unds
+    _     hash  prcn   lbrc  rbrc  dquo      coln  num1  num2  num3  bsls  _     
+    _     _     _      _     _     _         _     _     pipe  num0  _     _     
             >;
         };
 
