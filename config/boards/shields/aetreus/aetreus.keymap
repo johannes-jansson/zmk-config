@@ -32,7 +32,10 @@
 #define ampr  &kp LS(N6)
 #define quot  &kp BSLH
 #define dquo  &kp LS(N2)
-#
+#define astr  &kp PIPE
+#define scln  &kp LS(COMMA)
+#define coln  &kp LS(DOT)
+
 / {
     keymap {
         compatible = "zmk,keymap";
