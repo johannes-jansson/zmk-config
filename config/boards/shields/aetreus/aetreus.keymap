@@ -15,20 +15,23 @@
 #define shbspc &mt LSHIFT BSPC
 #define ctrret &mt LCTRL RET
 
-#define grav  &kp plus
+#define grav  &kp PLUS
 #define tild  &kp LA(RBKT)
 #define excl  &kp EXCL
 #define circ  &kp RBRC
 #define hash  &kp HASH
 #define at    &kp LA(N2)
 #define dlr   &kp LA(N4)
-#define prcnt &kp prcnt
+#define prcnt &kp PRCNT
 #define lcbr  &kp S(LA(N8))
 #define rcbr  &kp S(LA(N9))
 #define lprn  &kp S(N8)
 #define rprn  &kp S(N9)
 #define lbrc  &kp LA(N8)
 #define rbrc  &kp LA(N9)
+#define ampr  &kp S(N6)
+#define quot  &kp BSLH
+#define dquo  &kp S(N2)
 #
 / {
     keymap {
@@ -66,10 +69,10 @@
 //  pipe missing 
 
             bindings = <
-    grav  excl  at     lcbr  rcbr  &kp T             &kp Y     &kp U           &kp I     &kp O      &kp P      &kp BSLH
-    tild  circ  dlr    lprn  rprn  &kp G             &kp H     &kp J           &kp K     &kp L      &kp SEMI   &kp SQT
-    _     hash  prcnt  lbrc  rbrc  &kp B             &kp N     &kp M           &kp COMMA &kp DOT    &kp FSLH   _     
-    _     _     _      _     _      _                 _         _               &kp N0    _          _          _     
+    grav  excl  at     lcbr  rcbr  ampr             &kp Y     &kp U           &kp I     &kp O      &kp P      &kp BSLH
+    tild  circ  dlr    lprn  rprn  quot             &kp H     &kp J           &kp K     &kp L      &kp SEMI   &kp SQT
+    _     hash  prcnt  lbrc  rbrc  dquo             &kp N     &kp M           &kp COMMA &kp DOT    &kp FSLH   _     
+    _     _     _      _     _     _                 _         _               &kp N0    _          _          _     
             >;
         };
 
