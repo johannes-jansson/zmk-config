@@ -51,12 +51,31 @@
 #define pipe &kp RA(N7)
 #define ques &kp LS(MINUS)
 #define plus &kp MINUS
-#define mins &kp BSLH
+#define mins &kp FSLH
 #define bsls &kp LS(RA(N7))
 #define equl &kp LS(N0)
 #define unds &kp LS(FSLH)
 
 / {
+    combos {
+      compatible = "zmk,combos";
+      combo_comma = {
+        timeout-ms = <50>;
+        key-positions = <33 42>;
+        bindings = <&kp NUBS>;
+      };
+      combo_dot = {
+        timeout-ms = <50>;
+        key-positions = <34 42>;
+        bindings = <&kp LS(NUBS)>;
+      };
+      combo_slash = {
+        timeout-ms = <50>;
+        key-positions = <35 42>;
+        bindings = <&kp LS(MINUS)>;
+      };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -89,7 +108,7 @@
 //        -------+------+------+------+------|   |------+------+------+------+-------
 //               |      |      |      |      |   |   ?  |   |  |   0  |      |
 //               -----------------------------   -----------------------------
-//  pipe missing 
+//  pipe and question mark just temporary, <> kind of missing
 
             bindings = <
     grav  excl  at     lcbr  rcbr  ampr      astr  num7  num8  num9  plus  equl
