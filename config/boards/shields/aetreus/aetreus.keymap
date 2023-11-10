@@ -10,12 +10,24 @@
 #define _ &trans
 #define xxx &none
 
-// Custom modifiers and keys
+// Custom modifiers and keys for base layer
 #define sysesc &lt SYS ESC
 #define symtab &lt SYM TAB
 #define shbspc &mt LSHIFT BSPC
 #define ctrret &mt LCTRL RET
 #define ansiky &kp LS(N7)
+
+// Custom modifiers and keys for sys layer
+#define space1 &kp LA(N1)
+#define space2 &kp LA(N2)
+#define space3 &kp LA(N3)
+#define space4 &kp LA(N4)
+#define space5 &kp LA(N5)
+#define sspac1 &kp LS(LA(N1))
+#define sspac2 &kp LS(LA(N2))
+#define sspac3 &kp LS(LA(N3))
+#define sspac4 &kp LS(LA(N4))
+#define sspac5 &kp LS(LA(N5))
 
 // Sym layer (weird bc SE KB layout)
 #define grav &kp PLUS
@@ -120,10 +132,10 @@
 
         sys_layer {
             bindings = <
-    _      &kp C_VOL_DN &kp C_MUTE   &kp C_VOL_UP _             &bootloader       _        _        _      _         _      _     
-    _      &kp C_PREV   &kp C_PP     &kp C_NEXT   &kp PSCRN     &bt BT_CLR        &kp LEFT &kp DOWN &kp UP &kp RIGHT _      _     
-    _      _            &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2  &out OUT_TOG      _        _        _      _         _      _     
-    _      _            _            _            _             _                 _        _        _      _         _      _     
+    _  &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP  _              &bootloader       _         sspac1    sspac2  sspac3     sspac4  sspac5
+    _  &kp C_PREV    &kp C_PP      &kp C_NEXT    &kp PSCRN      &bt BT_CLR        &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  _       _     
+    _  _             &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2   &out OUT_TOG      _         space1    space2  space3     space4  space5
+    _  _             _             _             _              _                 _         _         _       _          _       _     
             >;
         };
     };
