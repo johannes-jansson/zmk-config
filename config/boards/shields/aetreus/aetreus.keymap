@@ -59,17 +59,17 @@
 / {
     combos {
       compatible = "zmk,combos";
-      combo_comma = {
+      combo_comma {
         timeout-ms = <50>;
         key-positions = <33 42>;
         bindings = <&kp NUBS>;
       };
-      combo_dot = {
+      combo_dot {
         timeout-ms = <50>;
         key-positions = <34 42>;
         bindings = <&kp LS(NUBS)>;
       };
-      combo_slash = {
+      combo_slash {
         timeout-ms = <50>;
         key-positions = <35 42>;
         bindings = <&kp LS(MINUS)>;
@@ -81,16 +81,16 @@
 
         default_layer {
 // -------------------------------------------------------------                     -------------------------------------------------------------
-// | SYSESC  |    Q    |    W    |    E    |    R    |    T    |                     |    Y    |    U    |    I    |    O    |    P    |    \    |
+// | SYSESC  |    Q    |    W    |    E    |    R    |    T    |                     |    Y    |    U    |    I    |    O    |    P    |    Å    |
 // |---------|---------|---------|---------|---------|---------|                     |---------|---------|---------|---------|---------|---------|
-// |   ESC   |    A    |    S    |    D    |    F    |    G    |                     |    H    |    J    |    K    |    L    |    ;    |    '    |
+// |   ESC   |    A    |    S    |    D    |    F    |    G    |                     |    H    |    J    |    K    |    L    |    Ö    |    Ä    |
 // ----------|---------|---------|---------|---------|---------|                     |---------|---------|---------|---------|---------|----------
 //           |    Z    |    X    |    C    |    V    |    B    |                     |    N    |    M    |    ,    |    .    |    /    |
 //           --------------------|---------|---------|---------|---------- ----------|---------|---------|---------|---------|----------
 //                               |  NONE   |   GUI   | SYMTAB  |  BSPCS  | |  SPACE  |   RET   |  R ALT  |  NONE   |
 //                               ----------------------------------------- -----------------------------------------
             bindings = <
-    sysesc   &kp Q  &kp W  &kp E  &kp R     &kp T                     &kp Y   &kp U     &kp I     &kp O      &kp P      &kp BSLH
+    sysesc   &kp Q  &kp W  &kp E  &kp R     &kp T                     &kp Y   &kp U     &kp I     &kp O      &kp P      &kp LBKT
     &kp ESC  &kp A  &kp S  &kp D  &kp F     &kp G                     &kp H   &kp J     &kp K     &kp L      &kp SEMI   &kp SQT
     xxx      &kp Z  &kp X  &kp C  &kp V     &kp B                     &kp N   &kp M     &kp COMMA &kp DOT    ansiky     xxx   
              xxx    xxx    xxx    &kp LGUI  symtab  shbspc  &kp SPACE ctrret  &kp RALT  xxx       xxx        xxx
