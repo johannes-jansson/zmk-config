@@ -73,7 +73,10 @@
 #define equl &kp LS(N0)
 #define unds &kp LS(FSLH)
 
-//;,    ,.  ./.<< .<>>>/<<<>/>.<, ,
+&mt {
+  tapping-term-ms = <250>;
+  quick-tap-ms = <250>;
+};
 
 / {
     combos {
