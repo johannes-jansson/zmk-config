@@ -109,13 +109,13 @@
 // ----------|---------|---------|---------|---------|---------|                     |---------|---------|---------|---------|---------|----------
 //           |    Z    |    X    |    C    |    V    |    B    |                     |    N    |    M    |    ,    |    .    |    /    |
 //           --------------------|---------|---------|---------|---------- ----------|---------|---------|---------|---------|----------
-//                               |  NONE   |   GUI   | SYMTAB  |  BSPCS  | |  SPACE  |   RET   |  R ALT  |  NONE   |
+//                               |   KR    |   GUI   | SYMTAB  | SHBSPC  | |  SPACE  | CTRRET  |  R ALT  |   KR    |
 //                               ----------------------------------------- -----------------------------------------
             bindings = <
-    sysesc   &kp Q  &kp W  &kp E  &kp R  &kp T                  &kp Y   &kp U  &kp I   &kp O  &kp P      &kp LBKT
-    &kp ESC  &kp A  &kp S  &kp D  &kp F  &kp G                  &kp H   &kp J  &kp K   &kp L  &kp SEMI   &kp SQT
-    xxx      &kp Z  &kp X  &kp C  &kp V  &kp B                  &kp N   &kp M  &comma  &dot   &slash    xxx   
-             xxx    xxx    xxx    gui    symtab  shbspc  space  ctrret  alt    xxx     xxx    xxx
+    sysesc   &kp Q  &kp W  &kp E        &kp R  &kp T                  &kp Y   &kp U  &kp I        &kp O  &kp P      &kp LBKT
+    &kp ESC  &kp A  &kp S  &kp D        &kp F  &kp G                  &kp H   &kp J  &kp K        &kp L  &kp SEMI   &kp SQT
+    xxx      &kp Z  &kp X  &kp C        &kp V  &kp B                  &kp N   &kp M  &comma       &dot   &slash    xxx   
+             xxx    xxx    &key_repeat  gui    symtab  shbspc  space  ctrret  alt    &key_repeat  xxx    xxx
             >;
         };
 
