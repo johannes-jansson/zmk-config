@@ -18,9 +18,6 @@
 #define space  &kp SPACE
 #define ctrret &mt LCTRL RET
 #define alt    &kp LALT
-#define comma  &kp COMMA
-#define dot    &kp DOT
-#define ansikey &kp LS(N7)
 
 // Custom modifiers and keys for sys layer
 #define space1 &kp LA(N1)
@@ -78,31 +75,27 @@
 
 / {
     behaviors {
-      ansiky: ansi_key {
+      comma: ansi_comma {
         compatible = "zmk,behavior-mod-morph";
-        label = "ANSI_KEY";
+        label = "ANSI_COMMA";
+        #binding-cells = <0>;
+        bindings = <&kp COMMA>, <&kp NUBS>;
+        mods = <(MOD_LSFT)>;
+      };
+      dot: ansi_dot {
+        compatible = "zmk,behavior-mod-morph";
+        label = "ANSI_DOT";
+        #binding-cells = <0>;
+        bindings = <&kp DOT>, <&kp LS(NUBS)>;
+        mods = <(MOD_LSFT)>;
+      };
+      slash: ansi_slash {
+        compatible = "zmk,behavior-mod-morph";
+        label = "ANSI_SLASH";
         #binding-cells = <0>;
         bindings = <&kp LS(N7)>, <&kp LS(MINUS)>;
         mods = <(MOD_LSFT)>;
       };
-    };
-    combos {
-      compatible = "zmk,combos";
-      combo_comma {
-        timeout-ms = <50>;
-        key-positions = <32 41>;
-        bindings = <&kp NUBS>;
-      };
-      combo_dot {
-        timeout-ms = <50>;
-        key-positions = <33 41>;
-        bindings = <&kp LS(NUBS)>;
-      };
-      // combo_slash {
-      //   timeout-ms = <50>;
-      //   key-positions = <34 41>;
-      //   bindings = <&kp LS(MINUS)>;
-      // };
     };
 
     keymap {
@@ -119,10 +112,10 @@
 //                               |  NONE   |   GUI   | SYMTAB  |  BSPCS  | |  SPACE  |   RET   |  R ALT  |  NONE   |
 //                               ----------------------------------------- -----------------------------------------
             bindings = <
-    sysesc   &kp Q  &kp W  &kp E  &kp R  &kp T                  &kp Y   &kp U  &kp I  &kp O  &kp P      &kp LBKT
-    &kp ESC  &kp A  &kp S  &kp D  &kp F  &kp G                  &kp H   &kp J  &kp K  &kp L  &kp SEMI   &kp SQT
-    xxx      &kp Z  &kp X  &kp C  &kp V  &kp B                  &kp N   &kp M  comma  dot    &ansiky    xxx   
-             xxx    xxx    xxx    gui    symtab  shbspc  space  ctrret  alt    xxx    xxx    xxx
+    sysesc   &kp Q  &kp W  &kp E  &kp R  &kp T                  &kp Y   &kp U  &kp I   &kp O  &kp P      &kp LBKT
+    &kp ESC  &kp A  &kp S  &kp D  &kp F  &kp G                  &kp H   &kp J  &kp K   &kp L  &kp SEMI   &kp SQT
+    xxx      &kp Z  &kp X  &kp C  &kp V  &kp B                  &kp N   &kp M  &comma  &dot   &slash    xxx   
+             xxx    xxx    xxx    gui    symtab  shbspc  space  ctrret  alt    xxx     xxx    xxx
             >;
         };
 
