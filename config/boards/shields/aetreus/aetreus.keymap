@@ -73,22 +73,24 @@
 #define equl &kp LS(N0)
 #define unds &kp LS(FSLH)
 
+//;,    ,.  ./.<< .<>>>/<<<>/>.<, ,
+
 / {
     combos {
       compatible = "zmk,combos";
       combo_comma {
         timeout-ms = <50>;
-        key-positions = <33 42>;
+        key-positions = <32 41>;
         bindings = <&kp NUBS>;
       };
       combo_dot {
         timeout-ms = <50>;
-        key-positions = <34 42>;
+        key-positions = <33 41>;
         bindings = <&kp LS(NUBS)>;
       };
       combo_slash {
         timeout-ms = <50>;
-        key-positions = <35 42>;
+        key-positions = <34 41>;
         bindings = <&kp LS(MINUS)>;
       };
     };
