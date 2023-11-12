@@ -12,11 +12,11 @@
 
 // Custom modifiers and keys for base layer
 #define systab &lt SYS TAB
-#define gui    &kp LGUI
+#define guitab &mt LGUI TAB
 #define shbspc &mt LSHIFT BSPC
 #define space  &kp SPACE
 #define ctrret &mt LCTRL RET
-#define alt    &kp LALT
+#define sysalt &ltt LALT SYS
 
 // Custom modifiers and keys for sys layer
 #define space1 &kp LA(N1)
@@ -104,6 +104,15 @@
         quick-tap-ms = <250>;
         bindings = <&mo>, <&key_repeat>;
       };
+      ltt: layer_tap_toggle {
+        compatible = "zmk,behavior-hold-tap";
+        label = "LAYER_TAP_TOGGLE";
+        #binding-cells = <2>;
+        flavor = "hold-preferred";
+        tapping-term-ms = <250>;
+        quick-tap-ms = <250>;
+        bindings = <&kp>, <&tog>;
+      };
     };
 
     keymap {
@@ -117,13 +126,14 @@
 // ----------|---------|---------|---------|---------|---------|                     |---------|---------|---------|---------|---------|----------
 //           |    Z    |    X    |    C    |    V    |    B    |                     |    N    |    M    |    ,    |    .    |    /    |
 //           --------------------|---------|---------|---------|---------- ----------|---------|---------|---------|---------|----------
-//                               |   KR    |   GUI   | SYMREP  | SHBSPC  | |  SPACE  | CTRRET  |  R ALT  |   KR    |
+//                               |         |   TAB   |   REP   |  BSPC   | |  SPACE  | RETURN  | SYSTOG  |         |
+//                               |         |   GUI   |   SYM   |  SHIFT  | |         |  CTRL   |   ALT   |         |
 //                               ----------------------------------------- -----------------------------------------
             bindings = <
-    systab   &kp Q  &kp W  &kp E        &kp R  &kp T                   &kp Y   &kp U  &kp I        &kp O  &kp P      &kp LBKT
-    &kp ESC  &kp A  &kp S  &kp D        &kp F  &kp G                   &kp H   &kp J  &kp K        &kp L  &kp SEMI   &kp SQT
-    xxx      &kp Z  &kp X  &kp C        &kp V  &kp B                   &kp N   &kp M  &comma       &dot   &slash    xxx   
-             xxx    xxx    &key_repeat  gui    &symrep SYM 0  shbspc  space  ctrret  alt    &key_repeat  xxx    xxx
+    systab   &kp Q  &kp W  &kp E  &kp R   &kp T                  &kp Y  &kp U   &kp I   &kp O  &kp P      &kp LBKT
+    &kp ESC  &kp A  &kp S  &kp D  &kp F   &kp G                  &kp H  &kp J   &kp K   &kp L  &kp SEMI   &kp SQT
+    xxx      &kp Z  &kp X  &kp C  &kp V   &kp B                  &kp N  &kp M   &comma  &dot   &slash    xxx   
+             xxx    xxx    xxx    guitab  &symrep SYM 0  shbspc  space  ctrret  sysalt  xxx    xxx       xxx
             >;
         };
 
@@ -136,14 +146,14 @@
 // -------+------+------+------+------+------|   |------+------+------+------+------+-------
 //        |   #  |   %  |   [  |   ]  |   "  |   |   :  |   1  |   2  |   3  |   \  |
 //        -------+------+------+------+------|   |------+------+------+------+-------
-//               |      |      |      |      |   |   ?  |   |  |   0  |      |
+//               |      |      |      |      |   |   |  |   0  |      |      |
 //               -----------------------------   -----------------------------
 
             bindings = <
     grav  excl  at     lcbr  rcbr  ampr      astr  num7  num8  num9  plus  equl
     tild  circ  dolr   lprn  rprn  quot      scln  num4  num5  num6  mins  unds
     _     hash  prcn   lbrc  rbrc  dquo      coln  num1  num2  num3  bsls  _     
-    _     _     _      _     _     _         _     ques  pipe  num0  _     _     
+    _     _     _      _     _     _         _     pipe  num0  _     _     _
             >;
         };
 
@@ -152,7 +162,7 @@
     _  &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP  _              &bootloader       _         sspac1    sspac2  sspac3     sspac4  _
     _  &kp C_PREV    &kp C_PP      &kp C_NEXT    &kp PSCRN      &bt BT_CLR        &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  _       _     
     _  _             &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2   &out OUT_TOG      _         space1    space2  space3     space4  _
-    _  _             _             _             _              _                 _         _         _       _          _       _     
+    _  _             _             _             _              _                 _         &tog SYS  _       _          _       _     
             >;
         };
     };
