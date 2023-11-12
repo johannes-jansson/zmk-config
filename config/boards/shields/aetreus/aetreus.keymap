@@ -11,9 +11,8 @@
 #define xxx &none
 
 // Custom modifiers and keys for base layer
-#define sysesc &lt SYS ESC
+#define systab &lt SYS TAB
 #define gui    &kp LGUI
-#define symtab &lt SYM TAB
 #define shbspc &mt LSHIFT BSPC
 #define space  &kp SPACE
 #define ctrret &mt LCTRL RET
@@ -96,6 +95,15 @@
         bindings = <&kp LS(N7)>, <&kp LS(MINUS)>;
         mods = <(MOD_LSFT)>;
       };
+      symrep: sym_repeat {
+        compatible = "zmk,behavior-hold-tap";
+        label = "SYM_REPEAT";
+        #binding-cells = <0>;
+        flavor = "hold-preferred";
+        tapping-term-ms = <250>;
+        quick-tap-ms = <250>;
+        bindings = <&mo SYM>, <&key_repeat>;
+      };
     };
 
     keymap {
@@ -103,19 +111,19 @@
 
         default_layer {
 // -------------------------------------------------------------                     -------------------------------------------------------------
-// | SYSESC  |    Q    |    W    |    E    |    R    |    T    |                     |    Y    |    U    |    I    |    O    |    P    |    Å    |
+// | SYSTAB  |    Q    |    W    |    E    |    R    |    T    |                     |    Y    |    U    |    I    |    O    |    P    |    Å    |
 // |---------|---------|---------|---------|---------|---------|                     |---------|---------|---------|---------|---------|---------|
 // |   ESC   |    A    |    S    |    D    |    F    |    G    |                     |    H    |    J    |    K    |    L    |    Ö    |    Ä    |
 // ----------|---------|---------|---------|---------|---------|                     |---------|---------|---------|---------|---------|----------
 //           |    Z    |    X    |    C    |    V    |    B    |                     |    N    |    M    |    ,    |    .    |    /    |
 //           --------------------|---------|---------|---------|---------- ----------|---------|---------|---------|---------|----------
-//                               |   KR    |   GUI   | SYMTAB  | SHBSPC  | |  SPACE  | CTRRET  |  R ALT  |   KR    |
+//                               |   KR    |   GUI   | SYMREP  | SHBSPC  | |  SPACE  | CTRRET  |  R ALT  |   KR    |
 //                               ----------------------------------------- -----------------------------------------
             bindings = <
-    sysesc   &kp Q  &kp W  &kp E        &kp R  &kp T                  &kp Y   &kp U  &kp I        &kp O  &kp P      &kp LBKT
-    &kp ESC  &kp A  &kp S  &kp D        &kp F  &kp G                  &kp H   &kp J  &kp K        &kp L  &kp SEMI   &kp SQT
-    xxx      &kp Z  &kp X  &kp C        &kp V  &kp B                  &kp N   &kp M  &comma       &dot   &slash    xxx   
-             xxx    xxx    &key_repeat  gui    symtab  shbspc  space  ctrret  alt    &key_repeat  xxx    xxx
+    systab   &kp Q  &kp W  &kp E        &kp R  &kp T                   &kp Y   &kp U  &kp I        &kp O  &kp P      &kp LBKT
+    &kp ESC  &kp A  &kp S  &kp D        &kp F  &kp G                   &kp H   &kp J  &kp K        &kp L  &kp SEMI   &kp SQT
+    xxx      &kp Z  &kp X  &kp C        &kp V  &kp B                   &kp N   &kp M  &comma       &dot   &slash    xxx   
+             xxx    xxx    &key_repeat  gui    &symrep  shbspc  space  ctrret  alt    &key_repeat  xxx    xxx
             >;
         };
 
