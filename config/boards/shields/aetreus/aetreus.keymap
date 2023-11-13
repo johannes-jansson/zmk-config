@@ -28,6 +28,9 @@
 #define sspac2 &kp LS(LA(N2))
 #define sspac3 &kp LS(LA(N3))
 #define sspac4 &kp LS(LA(N4))
+#define cut &kp LC(x)
+#define copy &kp LC(C)
+#define paste &kp LC(V)
 
 // Sym layer (weird bc SE KB layout)
 #define grav &kp PLUS
@@ -139,17 +142,10 @@
         };
 
         sym_layer {
-// 
-// -------------------------------------------   -------------------------------------------
-// |   `  |   !  |   @  |   {  |   }  |   &  |   |   *  |   7  |   8  |   9  |   +  |   =  |
-// |------+------+------+------+------+-------   |------+------+------+------+------+------|
-// |   ~  |   ^  |   $  |   (  |   )  |   '  |   |   ;  |   4  |   5  |   6  |   -  |   _  |
-// -------+------+------+------+------+------|   |------+------+------+------+------+-------
-//        |   #  |   %  |   [  |   ]  |   "  |   |   :  |   1  |   2  |   3  |   \  |
-//        -------+------+------+------+------|   |------+------+------+------+-------
-//               |      |      |      |      |   |   |  |   0  |      |      |
-//               -----------------------------   -----------------------------
-
+//      ` ! @ { } &    * 7 8 9 + =
+//      ~ ^ $ ( ) '    ; 4 5 6 - _
+//        # % [ ] "    : 1 2 3 \ 
+//                     | 0
             bindings = <
     grav  excl  at     lcbr  rcbr  ampr      astr  num7  num8  num9  plus  equl
     tild  circ  dolr   lprn  rprn  quot      scln  num4  num5  num6  mins  unds
@@ -160,10 +156,10 @@
 
         sys_layer {
             bindings = <
-    _  &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP  _              &bootloader       _         sspac1    sspac2  sspac3     sspac4  _
-    _  &kp C_PREV    &kp C_PP      &kp C_NEXT    &kp PSCRN      &bt BT_CLR        &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  _       _     
-    _  _             &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2   &out OUT_TOG      _         space1    space2  space3     space4  _
-    _  _             _             _             _              _                 _         &tog SYS  _       _          _       _     
+    _  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &bt BT_SEL 0  &bt BT_SEL 1        _         sspac1    sspac2  sspac3     sspac4  _
+    _  &kp C_PREV    &kp C_PP    &kp C_NEXT    &kp PSCRN     &bt BT_CLR          &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  _       &bootloader
+    _  _             cut         copy          paste         &kp UP              _         space1    space2  space3     space4  _
+    _  _             _           &kp LEFT      &kp DOWN      &kp RIGHT           _         &tog SYS  _       _          _       _     
             >;
         };
     };
