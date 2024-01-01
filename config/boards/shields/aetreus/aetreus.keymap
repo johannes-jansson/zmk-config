@@ -28,7 +28,7 @@
 #define sspac2 &kp LS(LA(N2))
 #define sspac3 &kp LS(LA(N3))
 #define sspac4 &kp LS(LA(N4))
-#define cut &kp LC(x)
+#define cut &kp LC(X)
 #define copy &kp LC(C)
 #define paste &kp LC(V)
 
