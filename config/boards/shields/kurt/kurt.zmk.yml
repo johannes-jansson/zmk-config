@@ -1,0 +1,11 @@
+file_format: "1"
+id: kurt
+name: Kurt
+type: shield
+url: https://github.com/johannes-jansson/zmk-config
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - kurt_left
+  - kurt_right
