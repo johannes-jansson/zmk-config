@@ -1,19 +1,166 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define DEFAULT 0
+#define SYM 1
+#define SYS 2
+
+#define _ &trans
+#define xxx &none
+
+// Custom modifiers and keys for base layer
+#define systab &lt SYS TAB
+#define guitab &mt LGUI TAB
+#define symrep &morep SYM 0
+#define shbspc &mt LSHIFT BSPC
+#define space  &kp SPACE
+#define ctrret &mt LCTRL RET
+#define sysalt &ltt LALT SYS
+
+// Custom modifiers and keys for sys layer
+#define space1 &kp LA(N1)
+#define space2 &kp LA(N2)
+#define space3 &kp LA(N3)
+#define space4 &kp LA(N4)
+#define sspac1 &kp LS(LA(N1))
+#define sspac2 &kp LS(LA(N2))
+#define sspac3 &kp LS(LA(N3))
+#define sspac4 &kp LS(LA(N4))
+#define cut &kp LC(X)
+#define copy &kp LC(C)
+#define paste &kp LC(V)
+
+// Sym layer (weird bc SE KB layout)
+#define grav &kp PLUS
+#define tild &kp RA(RBKT)
+#define excl &kp EXCL
+#define circ &kp RBRC
+#define hash &kp HASH
+#define at   &kp RA(N2)
+#define dolr &kp RA(N4)
+#define prcn &kp PRCNT
+#define lcbr &kp LS(RA(N8))
+#define rcbr &kp LS(RA(N9))
+#define lprn &kp LS(N8)
+#define rprn &kp LS(N9)
+#define lbrc &kp RA(N8)
+#define rbrc &kp RA(N9)
+#define ampr &kp LS(N6)
+#define quot &kp BSLH
+#define dquo &kp LS(N2)
+#define astr &kp PIPE
+#define scln &kp LS(COMMA)
+#define coln &kp LS(DOT)
+#define num0 &kp N0
+#define num1 &kp N1
+#define num2 &kp N2
+#define num3 &kp N3
+#define num4 &kp N4
+#define num5 &kp N5
+#define num6 &kp N6
+#define num7 &kp N7
+#define num8 &kp N8
+#define num9 &kp N9
+#define pipe &kp RA(N7)
+#define ques &kp LS(MINUS)
+#define plus &kp MINUS
+#define mins &kp FSLH
+#define bsls &kp LS(RA(N7))
+#define equl &kp LS(N0)
+#define unds &kp LS(FSLH)
+
+&mt {
+  tapping-term-ms = <250>;
+  quick-tap-ms = <250>;
+};
 
 / {
+    behaviors {
+      comma: ansi_comma {
+        compatible = "zmk,behavior-mod-morph";
+        label = "ANSI_COMMA";
+        #binding-cells = <0>;
+        bindings = <&kp COMMA>, <&kp NUBS>;
+        mods = <(MOD_LSFT)>;
+      };
+      dot: ansi_dot {
+        compatible = "zmk,behavior-mod-morph";
+        label = "ANSI_DOT";
+        #binding-cells = <0>;
+        bindings = <&kp DOT>, <&kp LS(NUBS)>;
+        mods = <(MOD_LSFT)>;
+      };
+      slash: ansi_slash {
+        compatible = "zmk,behavior-mod-morph";
+        label = "ANSI_SLASH";
+        #binding-cells = <0>;
+        bindings = <&kp LS(N7)>, <&kp LS(MINUS)>;
+        mods = <(MOD_LSFT)>;
+      };
+      morep: mo_repeat {
+        compatible = "zmk,behavior-hold-tap";
+        label = "MO_REPEAT";
+        #binding-cells = <2>;
+        flavor = "hold-preferred";
+        tapping-term-ms = <250>;
+        quick-tap-ms = <250>;
+        bindings = <&mo>, <&key_repeat>;
+      };
+      ltt: layer_tap_toggle {
+        compatible = "zmk,behavior-hold-tap";
+        label = "LAYER_TAP_TOGGLE";
+        #binding-cells = <2>;
+        flavor = "hold-preferred";
+        tapping-term-ms = <250>;
+        quick-tap-ms = <250>;
+        bindings = <&kp>, <&tog>;
+      };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
+// -------------------------------------------------------------                     -------------------------------------------------------------
+// | SYSTAB  |    Q    |    W    |    E    |    R    |    T    |                     |    Y    |    U    |    I    |    O    |    P    |    Å    |
+// |---------|---------|---------|---------|---------|---------|                     |---------|---------|---------|---------|---------|---------|
+// |   ESC   |    A    |    S    |    D    |    F    |    G    |                     |    H    |    J    |    K    |    L    |    Ö    |    Ä    |
+// ----------|---------|---------|---------|---------|---------|                     |---------|---------|---------|---------|---------|----------
+//           |    Z    |    X    |    C    |    V    |    B    |                     |    N    |    M    |    ,    |    .    |    /    |
+//           --------------------|---------|---------|---------|---------- ----------|---------|---------|---------|---------|----------
+//                               |         |   TAB   |   REP   |  BSPC   | |  SPACE  | RETURN  | SYSTOG  |         |
+//                               |         |   GUI   |   SYM   |  SHIFT  | |         |  CTRL   |   ALT   |         |
+//                               ----------------------------------------- -----------------------------------------
             bindings = <
-    &kp ESC    &kp Q    &kp W    &kp E     &kp R     &kp T       &kp Y     &kp U     &kp I     &kp O     &kp P    &kp BSLH
-    &kp TAB    &kp A    &kp S    &kp D     &kp F     &kp G       &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
-    &kp LSHIFT &kp Z    &kp X    &kp C     &kp V     &kp B       &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RCTRL
-    &none      &none    &kp LGUI &kp DEL   &kp RET   &kp SPACE   &kp ESC   &kp RET   &kp SPACE &kp TAB   &kp BSPC &kp RALT
+    systab   &kp Q  &kp W  &kp E  &kp R   &kp T                 &kp Y   &kp U   &kp I   &kp O  &kp P      &kp LBKT
+    &kp ESC  &kp A  &kp S  &kp D  &kp F   &kp G                 &kp H   &kp J   &kp K   &kp L  &kp SEMI   &kp SQT
+    xxx      &kp Z  &kp X  &kp C  &kp V   &kp B                 &kp N   &kp M   &comma  &dot   &slash     xxx   
+             xxx    xxx    xxx    guitab  symrep shbspc  space  ctrret  sysalt  xxx     xxx    xxx
             >;
+        };
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        sym_layer {
+//      ` ! @ { } &    * 7 8 9 + =
+//      ~ ^ $ ( ) '    ; 4 5 6 - _
+//        # % [ ] "    : 1 2 3 \ 
+//                     | 0
+            bindings = <
+    grav  excl  at     lcbr  rcbr  ampr      astr  num7  num8  num9  plus  equl
+    tild  circ  dolr   lprn  rprn  quot      scln  num4  num5  num6  mins  unds
+    _     hash  prcn   lbrc  rbrc  dquo      coln  num1  num2  num3  bsls  _     
+    _     _     _      _     _     _         _     pipe  num0  _     _     _
+            >;
+        };
+
+        sys_layer {
+            bindings = <
+    _  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &bt BT_SEL 0  &bt BT_SEL 1        _         sspac1    sspac2  sspac3     sspac4  _
+    _  &kp C_PREV    &kp C_PP    &kp C_NEXT    &kp PSCRN     &bt BT_CLR          &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  _       &bootloader
+    _  _             cut         copy          paste         &kp UP              _         space1    space2  space3     space4  _
+    _  _             _           &kp LEFT      &kp DOWN      &kp RIGHT           _         &tog SYS  _       _          _       _     
+            >;
         };
     };
 };
