@@ -1,0 +1,6 @@
+if SHIELD_GURK
+
+config ZMK_KEYBOARD_NAME
+    default "Gurk"
+
+endif
