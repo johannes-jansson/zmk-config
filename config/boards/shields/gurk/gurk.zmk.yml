@@ -1,6 +1,6 @@
 file_format: "1"
 id: gurk
-name: Gruk
+name: Gurk
 type: shield
 url: https://github.com/johannes-jansson/zmk-config
 requires: [pro_micro]
