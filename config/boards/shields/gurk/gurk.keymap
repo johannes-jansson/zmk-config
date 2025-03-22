@@ -156,10 +156,10 @@
 
         sys_layer {
             bindings = <
-    _  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &bt BT_SEL 0  &bt BT_SEL 1        _         sspac1    sspac2  sspac3     sspac4  _
-    _  &kp C_PREV    &kp C_PP    &kp C_NEXT    &kp PSCRN     &bt BT_CLR          &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  _       &bootloader
-    _  _             cut         copy          paste         &kp UP              _         space1    space2  space3     space4  _
-    _  _             _           &kp LEFT      &kp DOWN      &kp RIGHT           _         &tog SYS  _       _          _       _     
+    _  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &bt BT_SEL 0  &bt BT_SEL 1        _         sspac1    sspac2  sspac3     sspac4  &sys_reset
+    _  &kp C_PREV    &kp C_PP    &kp C_NEXT    &kp PSCRN     &bt BT_SEL 2        &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  _       &bootloader
+    _  _             cut         copy          paste         &bt BT_SEL 3        _         space1    space2  space3     space4  &bt BT_CLR
+    _  _             _           _             _             _                   _         &tog SYS  _       _          _       _     
             >;
         };
     };
